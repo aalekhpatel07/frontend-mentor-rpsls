@@ -1,5 +1,5 @@
 <script>
-    const scale = 1.25;
+    const scale = 1.3;
     const borderRadius = '20px';
     const borderColor = 'hsl(217, 16%, 45%)';
     const scoreColor = 'hsl(229, 64%, 46%)';
@@ -10,8 +10,8 @@
 
 </script>
 <style>
-    .barlow{
-        font-family: 'Barlow', sans-serif;
+    :global(.barlow){
+        font-family: 'Barlow Semi Condensed', sans-serif;
     }
     /* .barlow-c{
         font-family: 'Barlow Semi Condensed', sans-serif;
