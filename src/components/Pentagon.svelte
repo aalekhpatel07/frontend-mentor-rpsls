@@ -1,6 +1,4 @@
 <script>
-    // import Pentagon from '../../images/bg-pentagon.svg';
-
     import Action from './Action.svelte';
 
     import Scissors from '../../images/icon-scissors.svg';
@@ -8,6 +6,26 @@
     import Rock from '../../images/icon-rock.svg';
     import Lizard from '../../images/icon-lizard.svg';
     import Spock from '../../images/icon-spock.svg';
+
+    import { cubicOut } from 'svelte/easing';
+    import { crossfade } from 'svelte/transition';
+
+    const [send, receive] = crossfade({
+        duration: d => Math.sqrt(d * 500),
+        fallback: (node, params) => {
+            const style = getComputedStyle(node);
+            const transform = style.transform === 'none' ? '' : style.transform;
+
+            return {
+                duration: 600,
+                easing: cubicOut,
+                css: t => `
+                    transform: ${transform} scale(${t});
+                    opacity: ${t};
+                `
+            }
+        }
+    })
 
 
     const icons = {
@@ -18,6 +36,12 @@
         spock: Spock
     }
 
+    
+    const fetchRandomAction = () => {
+        const keys = Object.keys(icons)
+        const idx = Math.floor(Math.random() * keys.length)
+        return keys[idx]
+    }
 
     const gradients = {
         scissors: "hsl(39, 89%, 43%) to hsl(44, 84%, 50%)",
@@ -28,12 +52,19 @@
     };
 
     function handleActionSelected(e){
-        const name = e.detail.name;
+        selectedAction = e.detail.name;
+        randomAction = fetchRandomAction();
+        playzone = true;
     }
+
+    let selectedAction = null;
+    let randomAction = null;
+
+    let playzone = false;
+
 
 </script>
 <style>
-
     .scissors{
         top: 0rem;
         left: 5rem;
@@ -58,17 +89,17 @@
         width: 250px;
     }
     .pentagon-container{
-        margin-top: 4rem;
+        margin-top: 0rem;
     }
 
     @media screen and (min-width: 200px){
         .scissors{
-            top: -2rem;
+            top: -1.5rem;
             left: calc(300px - 12rem);
         }
         .rock{
             top: 13.5rem;
-            right: 0;
+            right: 1rem;
         }
         .paper{
             top: 3.5rem;
@@ -76,7 +107,7 @@
         }
         .lizard{
             top: 13.5rem;
-            left: 0;
+            left: 1rem;
         }
         .spock{
             top: 3.5rem;
@@ -85,6 +116,9 @@
         .pentagon{
             width: 300px;
         }
+        .pentagon-container{
+            margin-top: 0rem;
+        } 
     }
 
     
@@ -125,9 +159,12 @@
     }
     
 </style>
-<div class="mt-16">
+<div class="mt-0 md:mt-16">
     <div
         class="flex relative mx-auto pentagon-container "
+        class:hidden={playzone}
+        class:flex={!playzone}
+
     >
         <img
             class="pentagon select-none"
@@ -136,6 +173,7 @@
         />
         <div
             class="absolute scissors"
+            out:send={{key: 'scissors'}}
         >
             <Action
                 icon={icons.scissors}
@@ -144,7 +182,9 @@
                 on:action-selected={handleActionSelected}
             /> 
         </div>
-        <div class="absolute paper">
+        <div class="absolute paper"
+            out:send={{key: 'paper'}}
+        >
             <Action
                 icon={icons.paper}
                 gradient={gradients.paper}
@@ -152,7 +192,9 @@
                 on:action-selected={handleActionSelected}
             />
         </div>
-        <div class="absolute rock">
+        <div class="absolute rock"
+            out:send={{key: 'rock'}}
+        >
             <Action
                 icon={icons.rock}
                 gradient={gradients.rock}
@@ -160,7 +202,9 @@
                 on:action-selected={handleActionSelected}
             /> 
         </div>
-        <div class="absolute lizard">
+        <div class="absolute lizard"
+            out:send={{key: 'lizard'}}
+        >
             <Action
                 icon={icons.lizard}
                 gradient={gradients.lizard}
@@ -168,7 +212,9 @@
                 on:action-selected={handleActionSelected}
             />
         </div>
-        <div class="absolute spock">
+        <div class="absolute spock"
+            out:send={{key: 'spock'}}
+        >
             <Action
                 icon={icons.spock}
                 gradient={gradients.spock}
@@ -177,4 +223,26 @@
             /> 
         </div>
     </div>
+    {#if selectedAction && randomAction}
+        <div class="flex justify-between items-center w-60 md:w-screen max-w-lg lg:max-w-md ">
+            <div
+                in:receive={{key: selectedAction}}
+            >
+                <Action
+                    icon={icons[selectedAction]}
+                    gradient={gradients[selectedAction]}
+                    name={selectedAction}
+                />
+            </div>
+            <div
+                in:receive={{key: randomAction}}
+            >
+                <Action
+                    icon={icons[randomAction]}
+                    gradient={gradients[randomAction]}
+                    name={randomAction}
+                />
+            </div>
+        </div>
+    {/if}
 </div>
