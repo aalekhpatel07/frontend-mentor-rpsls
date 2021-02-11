@@ -25,7 +25,7 @@
         >
             <div
                 on:click
-                class="fixed top-0 left-0 h-screen w-screen bg-gray-100 bg-opacity-10"
+                class="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-50"
             />
             <div
                 on:click|stopPropagation
