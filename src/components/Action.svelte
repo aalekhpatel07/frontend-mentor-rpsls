@@ -8,6 +8,8 @@
     export let top;
     export let left;
 
+    export let md = 28, lg = 32, avp = 24, xl = 36;
+
     let colors = [];
 
     $: {
@@ -23,7 +25,7 @@
     }
 
 </script>
-<div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32">
+<div class="w-{avp} h-{avp} md:w-{md} md:h-{md} lg:w-{lg} lg:h-{lg} xl:h-{xl} xl:w-{xl}">
     <button
         class="rounded-full w-full h-full relative flex flex-col items-center justify-center focus:outline-none"
         type="button"
