@@ -9,14 +9,16 @@ const loadURL = serve({ directory: 'public' });
 let mainWindow;
 
 function isDev() {
-    return !app.isPackaged;
+    return process.env.NODE_ENV !== 'production';
 }
 
 function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
+        height: 800,
         width: 800,
-        height: 600,
+        minWidth: 400,
+        minHeight: 650,
         webPreferences: {
             nodeIntegration: true
         },
