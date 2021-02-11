@@ -3,12 +3,13 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import sveltePreprocess from "svelte-preprocess";
 
-const production = !process.env.ROLLUP_WATCH;
+const production = process.env.NODE_ENV === 'production';
 
 function serve() {
 	let server;
-	
+
 	function toExit() {
 		if (server) server.kill(0);
 	}
@@ -42,8 +43,18 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file - better for performance
 			css: css => {
-				css.write('public/build/bundle.css');
-			}
+				css.write('bundle.css');
+			},
+            preprocess: sveltePreprocess({
+                sourceMap: !production,
+                postcss: {
+                    plugins: [
+                        require("tailwindcss"),
+                        require("autoprefixer"),
+                        require("postcss-nesting")
+                    ]
+                }
+            })
 		}),
 
 		// If you have external dependencies installed from
