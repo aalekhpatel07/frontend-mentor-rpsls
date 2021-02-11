@@ -1,10 +1,10 @@
 <script>
-    export let background;
+    const backgroundGradient = 'radial-gradient(ellipse at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%))';
 </script>
 <style></style>
 <div
     class="min-h-screen min-w-full"
-    style="background: {background};"
+    style="background: {backgroundGradient};"
 >
     <slot></slot>
 </div>
