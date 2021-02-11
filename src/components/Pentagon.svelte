@@ -35,36 +35,36 @@
 <style>
 
     .scissors{
-        top: -2rem;
-        left: 3rem;
+        top: 0rem;
+        left: 5rem;
     }
     .rock{
-        top: 9rem;
+        top: 13rem;
         right: 0;
     }
     .paper{
-        top: 2rem;
-        right: -3rem;
+        top: 5rem;
+        right: -2rem;
     }
     .lizard{
-        top: 9rem;
-        left: -1rem;
+        top: 13rem;
+        left: 0;
     }
     .spock{
-        top: 2rem;
-        left: -3rem;
+        top: 5rem;
+        left: -2rem;
     }
     .pentagon{
-        width: 200px;
+        width: 250px;
     }
     .pentagon-container{
         margin-top: 4rem;
     }
 
-    @media screen and (min-width: 421px){
+    @media screen and (min-width: 200px){
         .scissors{
             top: -2rem;
-            left: calc(150px - 3rem);
+            left: calc(300px - 12rem);
         }
         .rock{
             top: 13.5rem;
@@ -85,15 +85,13 @@
         .pentagon{
             width: 300px;
         }
-        /* .pentagon-container{
-            margin-top: 0;
-            min-height: 100vh;
-        } */
     }
+
+    
     @media screen and (min-width: 768px){
         .scissors{
             top: -3rem;
-            left: calc(200px - 3rem);
+            left: calc(400px - 16rem);
         }
         .rock{
             top: 18rem;
@@ -114,9 +112,6 @@
         .pentagon{
             width: 400px;
         }
-        /* .pentagon-container{
-            margin-top: 6rem;
-        } */
     }
     @media screen and (min-width: 1024px){
        .pentagon-container{
@@ -132,7 +127,7 @@
 </style>
 <div class="my-16">
     <div
-        class="flex relative mx-auto pentagon-container border-4 border-red-600"
+        class="flex relative mx-auto pentagon-container "
     >
         <img
             class="pentagon"
