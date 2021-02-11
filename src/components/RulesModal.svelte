@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<div class="block md:hidden h-screen w-screen bg-white flex flex-col justify-between items-center p-8">
+<div class="block md:hidden h-screen w-screen bg-white flex flex-col justify-around items-center p-8">
     <div class="w-full text-center">
         <span
             class="barlow uppercase tracking-normal font-bold text-4xl"
