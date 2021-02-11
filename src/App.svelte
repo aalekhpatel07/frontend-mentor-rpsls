@@ -1,6 +1,6 @@
 <script>
-	export let appName;
-	
+	import Home from './pages/Home.svelte'
+
 </script>
 <style global lang="postcss">
 
@@ -11,19 +11,11 @@
 @tailwind utilities;
 
 </style>
-<main>
-	<h1>Welcome to {appName} App!</h1>
-	<img src="/favicon.png" alt="Svelte Logo" />
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-<footer>
-	<nav class="flex flex-col"	>
-		<a href="https://svelte.dev/docs">API</a>
-		<a href="https://svelte.dev/examples">Examples</a>
-		<a href="https://svelte.dev/repl/hello-world">REPL</a>
-		<a href="https://svelte.dev/blog">Blog</a>
-		<a href="https://svelte.dev/faq">FAQ</a>
-		<a href="https://discord.com/invite/yy75DKs">Discord</a>
-		<a href="https://github.com/sveltejs/svelte">GitHub</a>
-	</nav>
-</footer>
+
+
+<Home>
+	<!-- <div class="attribution">
+		Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+		Coded by <a href="/" >Your Name Here</a>.
+	</div> -->
+</Home>

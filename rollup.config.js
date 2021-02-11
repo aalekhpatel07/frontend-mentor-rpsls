@@ -42,19 +42,19 @@ export default {
 			dev: !production,
 			// we'll extract any component CSS out into
 			// a separate file - better for performance
-			css: css => {
-				css.write('bundle.css');
-			},
-            preprocess: sveltePreprocess({
-                sourceMap: !production,
-                postcss: {
-                    plugins: [
-                        require("tailwindcss"),
-                        require("autoprefixer"),
-                        require("postcss-nesting")
-                    ]
-                }
-            })
+			// css: css => {
+			// 	css.write('bundle.css');
+			// },
+            // preprocess: sveltePreprocess({
+            //     sourceMap: !production,
+            //     postcss: {
+            //         plugins: [
+            //             require("tailwindcss"),
+            //             require("autoprefixer"),
+            //             require("postcss-nesting")
+            //         ]
+            //     }
+            // })
 		}),
 
 		// If you have external dependencies installed from
