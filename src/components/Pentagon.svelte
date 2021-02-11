@@ -125,12 +125,12 @@
     }
     
 </style>
-<div class="my-16">
+<div class="mt-16">
     <div
         class="flex relative mx-auto pentagon-container "
     >
         <img
-            class="pentagon"
+            class="pentagon select-none"
             src="images/bg-pentagon.svg"
             alt="Pentagon"
         />
