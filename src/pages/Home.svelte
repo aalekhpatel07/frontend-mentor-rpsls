@@ -1,6 +1,7 @@
 <script>
     import Backdrop from '../components/Backdrop.svelte';
     import HeaderPanel from '../components/HeaderPanel.svelte';
+    import Pentagon from '../components/Pentagon.svelte';
 
     let score = 12;
     
@@ -8,14 +9,14 @@
 <style>
 </style>
 <Backdrop>
-    <div class="min-h-screen min-w-full pt-12 flex flex-col justify-start">
+    <div class="min-h-screen min-w-full pt-6 flex flex-col justify-start items-between">
         <div class="flex justify-center">
             <HeaderPanel
                 score={score}
             />
         </div>
-        <!-- <div class="flex justify-center border-4 border-red-600">
-            <HeaderPanel score={score}/>
-        </div> -->
+        <div class="flex justify-center">
+            <Pentagon />
+        </div>
     </div>
 </Backdrop>
