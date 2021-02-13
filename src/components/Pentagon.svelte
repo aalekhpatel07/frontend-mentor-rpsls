@@ -1,67 +1,20 @@
 <script>
     import Action from './Action.svelte';
-
-    import Scissors from '../../images/icon-scissors.svg';
-    import Paper from '../../images/icon-paper.svg';    
-    import Rock from '../../images/icon-rock.svg';
-    import Lizard from '../../images/icon-lizard.svg';
-    import Spock from '../../images/icon-spock.svg';
-
-    import { cubicOut } from 'svelte/easing';
-    import { crossfade } from 'svelte/transition';
-
-    const [send, receive] = crossfade({
-        duration: d => Math.sqrt(d * 500),
-        fallback: (node, params) => {
-            const style = getComputedStyle(node);
-            const transform = style.transform === 'none' ? '' : style.transform;
-
-            return {
-                duration: 600,
-                easing: cubicOut,
-                css: t => `
-                    transform: ${transform} scale(${t});
-                    opacity: ${t};
-                `
-            }
-        }
-    })
-
-
-    const icons = {
-        scissors: Scissors,
-        paper: Paper,
-        rock: Rock,
-        lizard: Lizard,
-        spock: Spock
-    }
-
+    import { createEventDispatcher } from 'svelte';
+    import { gradients } from '../@compute/data';
+    import { icons } from '../@compute/data';
     
-    const fetchRandomAction = () => {
-        const keys = Object.keys(icons)
-        const idx = Math.floor(Math.random() * keys.length)
-        return keys[idx]
-    }
-
-    const gradients = {
-        scissors: "hsl(39, 89%, 43%) to hsl(44, 84%, 50%)",
-        paper: "hsl(240, 89%, 62%) to hsl(230, 89%, 65%)",
-        rock: "hsl(349, 71%, 42%) to hsl(349, 70%, 56%)",
-        lizard: "hsl(261, 78%, 60%) to hsl(261, 72%, 63%)",
-        spock: "hsl(199, 59%, 53%) to hsl(189, 58%, 57%)"
-    };
+    const dispatch = createEventDispatcher();
+        
 
     function handleActionSelected(e){
         selectedAction = e.detail.name;
-        randomAction = fetchRandomAction();
-        playzone = true;
+        dispatch('new-game', {
+            player: selectedAction
+        })
     }
 
     let selectedAction = null;
-    let randomAction = null;
-
-    let playzone = false;
-
 
 </script>
 <style>
@@ -159,12 +112,9 @@
     }
     
 </style>
-<div class="mt-0 md:mt-16">
+<div class="mt-0 md:mt-16 lg:mt-4">
     <div
         class="flex relative mx-auto pentagon-container "
-        class:hidden={playzone}
-        class:flex={!playzone}
-
     >
         <img
             class="pentagon select-none"
@@ -173,7 +123,6 @@
         />
         <div
             class="absolute scissors"
-            out:send={{key: 'scissors'}}
         >
             <Action
                 icon={icons.scissors}
@@ -183,7 +132,6 @@
             /> 
         </div>
         <div class="absolute paper"
-            out:send={{key: 'paper'}}
         >
             <Action
                 icon={icons.paper}
@@ -193,7 +141,6 @@
             />
         </div>
         <div class="absolute rock"
-            out:send={{key: 'rock'}}
         >
             <Action
                 icon={icons.rock}
@@ -203,7 +150,6 @@
             /> 
         </div>
         <div class="absolute lizard"
-            out:send={{key: 'lizard'}}
         >
             <Action
                 icon={icons.lizard}
@@ -213,7 +159,6 @@
             />
         </div>
         <div class="absolute spock"
-            out:send={{key: 'spock'}}
         >
             <Action
                 icon={icons.spock}
@@ -223,26 +168,4 @@
             /> 
         </div>
     </div>
-    {#if selectedAction && randomAction}
-        <div class="flex justify-between items-center w-60 md:w-screen max-w-lg lg:max-w-md ">
-            <div
-                in:receive={{key: selectedAction}}
-            >
-                <Action
-                    icon={icons[selectedAction]}
-                    gradient={gradients[selectedAction]}
-                    name={selectedAction}
-                />
-            </div>
-            <div
-                in:receive={{key: randomAction}}
-            >
-                <Action
-                    icon={icons[randomAction]}
-                    gradient={gradients[randomAction]}
-                    name={randomAction}
-                />
-            </div>
-        </div>
-    {/if}
 </div>
