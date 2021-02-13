@@ -27,7 +27,7 @@
 </style>
 
 <div
-    class="border-4 flex justify-between w-8/12"
+    class="border-4 flex justify-between w-4/6 "
     style="border-radius: {borderRadius}; --scale: {scale}; border-color: {borderColor};"
 >
     <div class="flex flex-col justify-center py-6 px-8 w-2/5 sm:w-1/2 md:w-2/3 lg:w-3/4 text-white">
@@ -37,7 +37,7 @@
         <span class="barlow text-xs md:text-xl transform-y-scale uppercase font-bold">Lizard</span>
         <span class="barlow text-xs md:text-xl transform-y-scale uppercase font-bold">Spock</span>
     </div>
-    <div class="flex flex-col justify-center p-6 w-3/5 sm:w-1/2 md:w-1/3 lg:w-4/12">
+    <div class="flex flex-col justify-center p-6 w-3/5 sm:w-1/2 md:w-1/3 lg:w-1/4">
         <div
             class="bg-white h-100 py-3 md:py-6 lg:py-4 rounded-lg flex flex-col align-center justify-center"
         >
