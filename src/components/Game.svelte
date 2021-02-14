@@ -31,7 +31,7 @@
     let house = null;
     let gameInProgress = false;
     let processing = false;
-    let winner;
+    let winner = null;
 
     function sendResult(_player){
         dispatch('result', { status: _player === 1 ? 'win' : (_player === 2 ? 'lose' : 'tie') });
@@ -55,8 +55,14 @@
             compute()
         }
     }
-    function resetGame(){
 
+    function handlePlayAgain(){
+        gameInProgress = false
+        player = null
+        house = null
+        processing = false
+        winner = null
+        verdict = null
     }
     
 
@@ -70,9 +76,9 @@
             word={word}
             verdict={verdict}
             winnerHouse={winner === 2}
-            on:reset-game={resetGame}
             houseVisible={!processing}
             status={winner}
+            on:play-again={handlePlayAgain}
         />
     </div>
 {:else}
