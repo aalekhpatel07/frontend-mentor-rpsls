@@ -2,7 +2,9 @@
     import Action from './Action.svelte';
     import { createEventDispatcher } from 'svelte';
     import { gradients } from '../@compute/data';
-    import { icons } from '../@compute/data';
+    import { icons as wr_icons } from '../@compute/data';
+    
+    const icons = wr_icons.rpsls;
     
     const dispatch = createEventDispatcher();
         
