@@ -1,7 +1,10 @@
 <script>
     import Pentagon from './Pentagon.svelte';
     import Playzone from './Playzone.svelte';
+    import Triangle from './Triangle.svelte';
+
     import { createEventDispatcher } from 'svelte';
+    import { fade } from 'svelte/transition'
     import { getFancyWord } from '../@compute/vocab';
     // import { cubicInOut } from 'svelte/easing';
     // import fadeScale from '../transitions/fadeScale';
@@ -26,6 +29,7 @@
 
     export let word;
     export let verdict;
+    export let variant = 'rpsls';
     
     let player = null;
     let house = null;
@@ -41,7 +45,7 @@
     async function compute(){
         
         gameInProgress = true;
-        house = move()
+        house = move(variant)
         // await delay(500);
         
         processing = false;
@@ -84,9 +88,15 @@
 {:else}
     <div
     >
-        <Pentagon
-            on:new-game={startNewGame}
-        />
+        {#if variant == 'rps'}
+            <Triangle
+                on:new-game={startNewGame}
+            />
+        {:else}
+            <Pentagon
+                on:new-game={startNewGame}
+            />
+        {/if}
     </div>
     
 {/if}
