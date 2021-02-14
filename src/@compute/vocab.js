@@ -48,6 +48,6 @@ const attackedBy = {
 export const getFancyWord = (action1, action2) => {
     if(action1 && action2 && attack[action1] && attack[action1][action2]) return {word: attack[action1][action2], winner: 1};
     else if(action1 && action2 && attackedBy[action1] && attackedBy[action1][action2]) return {word: attackedBy[action1][action2], winner: 2};
-    return {word: 'tie', winner: 0};
+    return {word: '', winner: 0};
     // Return how action1 compares against action2.
 }
