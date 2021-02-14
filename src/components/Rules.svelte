@@ -1,10 +1,15 @@
 <script>
     import RulesModal from './RulesModal.svelte'
-    import RulesButton from './RulesButton.svelte'    
+    import RulesButton from './RulesButton.svelte'
+    
+    import RPSRules from '../../images/image-rules.svg'
+    import RPSLSRules from '../../images/image-rules-bonus.svg'
+    
     import { fade } from 'svelte/transition'
     import { cubicOut } from 'svelte/easing'
 
     let modalOpen = false;
+    export let variant;
 
     function handleModalToggle(){
         modalOpen = !modalOpen
@@ -34,6 +39,8 @@
             >
             <RulesModal
                 on:click={handleModalToggle}
+                logo={variant === 'rps' ? RPSRules : RPSLSRules}
+                height={variant === 'rps' ? 330 : 500}
             />
             </div>
         </div>

@@ -1,8 +1,8 @@
 <script>
     
-    import RulesSVG from '../../images/image-rules-bonus.svg'
-
+    export let logo;
     const rulesColor = 'hsl(229, 25%, 31%)'
+    export let height;
 
 </script>
 
@@ -27,7 +27,8 @@
     </div>
     <br>
     <div>
-        <RulesSVG/>
+        <!-- <img src={logo} alt={'rules'} width={330}/> -->
+        <svelte:component this={logo} {height}/>
     </div>
 </div>
 
@@ -41,7 +42,8 @@
         </span>
         
     </div>
-    <RulesSVG/>
+    
+    <svelte:component this={logo} {height}/>
     <button class="focus:outline-none text-gray-200 hover:text-gray-100 rounded-full bg-gray-400 p-2" on:click>
         
         <svg
