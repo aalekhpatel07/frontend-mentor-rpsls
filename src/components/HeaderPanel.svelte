@@ -1,12 +1,15 @@
 <script>
+    import ScoreNumeral from './ScoreNumeral.svelte'
+
     const scale = 1.3;
     const borderRadius = '20px';
     const borderColor = 'hsl(217, 16%, 45%)';
     const scoreColor = 'hsl(229, 64%, 46%)';
-    const scoreValueColor = 'hsl(229, 25%, 31%)';
+    
     const letterSpacing = '2px';
 
-    export let score;
+    export let score, negative;
+    
 
 </script>
 <style>
@@ -47,12 +50,12 @@
             >
                 Score
             </span>
-            <span
-                class="mx-auto barlow text-4xl transform-y-scale md:text-6xl font-bold"
-                style="color: {scoreValueColor};"
-            >
-                {score}
-            </span>    
+            
+            <ScoreNumeral
+                bind:score
+                bind:negative
+            />
+                
         </div>
     </div>
 </div>
