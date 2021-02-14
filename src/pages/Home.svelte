@@ -4,22 +4,31 @@
     import Game from '../components/Game.svelte';
     import Rules from '../components/Rules.svelte';
 
-    let score = 12;
+    let score = 0;
+    let negative;
     
+
     function handleResult(e){
         const { status } = e.detail;
-        if(status === 'win')score++;
-        else if(status === 'lose')score--;
+        if(status === 'win'){
+            score = score + 1
+            negative = false;
+        }else if(status === 'lose'){
+            score = score - 1
+            negative = true;
+        }
     }
+
 
 </script>
 <style>
 </style>
 <Backdrop>
-    <div class="min-h-screen pt-3 pb-0 flex flex-col justify-start items-around">
+    <div class="min-h-screen pt-3 pb-0 flex flex-col justify-start items-around max-h-screen">
         <div class="flex justify-center"   >
             <HeaderPanel
-                score={score}
+                bind:score
+                bind:negative
             />
         </div>
         <div
