@@ -3,20 +3,21 @@
     import PlayAgainButton from './PlayAgainButton.svelte'
     import Glowable from './Glowable.svelte'
 
-    import { icons } from '../@compute/data';
+    import { icons as wr_icons } from '../@compute/data';
     import { gradients } from '../@compute/data';
     import { fade } from 'svelte/transition';
     import { cubicInOut } from 'svelte/easing';
 
 
     export let verdict;
-    export let word;
+    export let word, variant;
     export let selectedAction;
     export let randomAction;
     // export let winnerHouse = false;
     export let houseVisible = false;
     export let status;
 
+    const icons = variant === 'rps' ? wr_icons.rps : wr_icons.rpsls
 
 </script>
 <style>
