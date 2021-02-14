@@ -4,15 +4,20 @@ import Rock from '../../images/icon-rock.svg';
 import Lizard from '../../images/icon-lizard.svg';
 import Spock from '../../images/icon-spock.svg';
 
-
 export const icons = {
-    scissors: Scissors,
-    paper: Paper,
-    rock: Rock,
-    lizard: Lizard,
-    spock: Spock
+    rps: {
+        scissors: Scissors,
+        paper: Paper,
+        rock: Rock,
+    },
+    rpsls: {
+        scissors: Scissors,
+        paper: Paper,
+        rock: Rock,
+        lizard: Lizard,
+        spock: Spock
+    }
 }
-
 
 export const gradients = {
     scissors: "hsl(39, 89%, 43%) to hsl(44, 84%, 50%)",
