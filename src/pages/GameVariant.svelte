@@ -3,47 +3,42 @@
     import HeaderPanel from '../components/HeaderPanel.svelte';
     import Game from '../components/Game.svelte';
     import Rules from '../components/Rules.svelte';
+    import VariantToggler from '../components/VariantToggler.svelte';
 
-    let score = 0;
-    let negative;
+    export let variant, score, negative;
     
-
-    function handleResult(e){
-        const { status } = e.detail;
-        if(status === 'win'){
-            score = score + 1
-            negative = false;
-        }else if(status === 'lose'){
-            score = score - 1
-            negative = true;
-        }
-    }
-
 
 </script>
 <style>
 </style>
 <Backdrop>
     <div class="min-h-screen pt-3 pb-0 flex flex-col justify-start items-around max-h-screen">
-        <div class="flex justify-center"   >
+        <div class="flex justify-center">
             <HeaderPanel
                 bind:score
                 bind:negative
+                {variant}
             />
         </div>
+        <div class="flex justify-center relative">
+            <VariantToggler bind:variant/>
+        </div>
         <div
-            class="flex justify-center mx-auto mt-16 md:mt-0"
+            class="flex justify-center mx-auto mt-16 md:mt-8"
             style="overflow: none;"
         >
             <Game
-                on:result={handleResult}
+                on:result
+                bind:score
+                bind:negative
+                {variant}
             />
         </div>
         <div class="flex justify-center md:hidden mx-auto mt-16">
-            <Rules />
+            <Rules bind:variant/>
         </div>
         <div class="hidden md:block md:absolute md:bottom-16 md:right-16 ">
-            <Rules />
+            <Rules bind:variant/>
         </div>
     </div>
 </Backdrop>
