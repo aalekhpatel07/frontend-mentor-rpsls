@@ -1,12 +1,13 @@
 <script>
     import Action from './Action.svelte'
+    import PlayAgainButton from './PlayAgainButton.svelte'
+    import Glowable from './Glowable.svelte'
+
     import { icons } from '../@compute/data';
     import { gradients } from '../@compute/data';
-    import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
     import { cubicInOut } from 'svelte/easing';
 
-    const dispatch = createEventDispatcher();
 
     export let verdict;
     export let word;
@@ -14,58 +15,69 @@
     export let randomAction;
     // export let winnerHouse = false;
     export let houseVisible = false;
+    export let status;
 
 
 </script>
 <style>
-
+    .mw-70{
+        max-width: 70%;
+    }
 </style>
 <div
-    class="hidden md:flex justify-between items-center w-60 md:w-screen max-w-lg lg:max-w-lg xl:max-w-2xl md:mt-16"
+    class="grid grid-cols-9 gap-4 md:mt-8 mx-auto w-screen mw-70"
 >
     <div
-        class="flex flex-col justify-center items-center"
+        class="col-start-1 col-span-4 flex flex-col justify-center items-center"
     >
-        <span class="hidden md:inline-block uppercase barlow text-white shadow-sm mt-4 whitespace-nowrap md:text-lg md:mb-8"> you picked </span>
-        <Action
-            icon={icons[selectedAction]}
-            gradient={gradients[selectedAction]}
-            name={selectedAction}
-            xl={60}
-            lg={52}
-            md={48}
-        />
-        <span class="inline-block md:hidden uppercase barlow text-white shadow-sm mt-4 whitespace-nowrap text-lg md:text-2xl md:mb-8"> you picked </span>
-        <span class="uppercase barlow text-white shadow-sm whitespace-nowrap mt-4 text-lg md:text-2xl"> {selectedAction} </span>
+        <span class="order-2 md:order-1 uppercase barlow text-white shadow-sm mt-4 whitespace-nowrap md:text-lg md:mb-8"> you picked </span>
+        <div class="order-1 md:order-2">
+            <Glowable
+                glow={status === 1}
+            >
+                <Action
+                    icon={icons[selectedAction]}
+                    gradient={gradients[selectedAction]}
+                    name={selectedAction}
+                    xl={60}
+                    lg={52}
+                    md={48}
+                />
+            </Glowable>
+            
+        </div>
+        <span class="order-3 uppercase barlow text-white shadow-sm whitespace-nowrap mt-4 text-lg md:text-2xl"> {selectedAction} </span>
     </div>
+    <span class="col-start-5 col-span-1 flex flex-col items-center justify-center uppercase barlow text-white text-center shadow-sm text-lg md:text-2xl whitespace-nowrap">
+        {#if verdict && houseVisible}
+            <span in:fade={{duration: 1000, easing: cubicInOut}}> {word} </span>
+        {:else}
+            <span in:fade={{duration: 1000, easing: cubicInOut}} >...</span>
+        {/if}      
+    </span>
     <div
-        class="flex flex-col justify-center items-center w-full"
+        class="col-end-10 col-span-4 flex flex-col justify-center items-center" 
     >
-        <span class="uppercase barlow text-white text-center shadow-sm mt-4 text-lg md:text-2xl w-16 md:w-48">
-            {#if verdict && houseVisible}
-                <span transition:fade={{duration: 1000, easing: cubicInOut}}> {word} </span>
-            {:else}
-                <span in:fade={{duration: 1000, easing: cubicInOut}} >...</span>
-            {/if}      
-        </span>
-    </div>
-    <div
-        class="flex flex-col justify-center items-center" 
-    >
-        <span class="hidden md:inline-block uppercase barlow text-white shadow-sm mt-4 whitespace-nowrap md:text-lg md:mb-8"> the house picked </span>
-        <Action
-            icon={icons[randomAction]}
-            gradient={gradients[randomAction]}
-            name={randomAction}
-            xl={60}
-            lg={52}
-            md={48}
-            visible={houseVisible}
-        />
-        <span class="inline-block md:hidden uppercase barlow text-white shadow-sm mt-4 whitespace-nowrap text-lg md:text-2xl md:mb-8"> the house picked </span>
-        <span class="uppercase barlow text-white shadow-sm mt-4 text-lg md:text-2xl whitespace-nowrap"> 
+        <span class="order-2 md:order-1 uppercase barlow text-white shadow-sm mt-4 whitespace-nowrap md:text-lg md:mb-8"> the house picked </span>
+        <div class="order-1 md:order-2">
+            <Glowable
+                glow={status === 2}
+            >
+                <Action
+                    icon={icons[randomAction]}
+                    gradient={gradients[randomAction]}
+                    name={randomAction}
+                    xl={60}
+                    lg={52}
+                    md={48}
+                    visible={houseVisible}
+                />
+            </Glowable>
+            
+        </div>
+        <span class="order-3 uppercase barlow text-white shadow-sm mt-4 text-lg md:text-2xl whitespace-nowrap"> 
             {#if houseVisible}
-                <span transition:fade={{duration: 1000, easing: cubicInOut}}>{randomAction}</span>
+                <span in:fade={{duration: 1000, easing: cubicInOut}}>{randomAction}</span>
             {:else}
                 <span in:fade={{duration: 1000, easing: cubicInOut}}>...</span>
             {/if}
@@ -73,4 +85,24 @@
         
         
     </div>
+</div>
+<div class="flex flex-col justify-center items-center gap-6">
+    
+    <span
+        class="barlow text-white whitespace-nowrap uppercase w-48 md:w-60 text-center text-xl md:text-6xl"
+        in:fade={{duration: 1000, easing: cubicInOut}}
+    >
+        {#if status === 1}
+            you win
+        {:else if status === 2} 
+            you lose
+        {:else}
+            game tied
+        {/if}
+        
+    </span>
+    <div class="flex justify-center">
+        <PlayAgainButton on:play-again/>
+    </div>
+    
 </div>
