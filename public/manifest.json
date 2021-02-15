@@ -4,13 +4,23 @@
     "version": "1.0.0",
     "manifest_version": 2,
     "icons": {
-        "16": "favicon.ico",
-        "48": "favicon.ico",
-        "128": "favicon.ico"
+        "16": "favicon-16x16.png",
+        "32": "favicon-32x32.png",
+        "48": "bazinga.png",
+        "128": "bazinga.png"
     },
     "background": {
         "scripts": ["background.js"],
         "persistent": false
+    },
+    "commands":{
+        "_execute_browser_action":{
+            "suggested_key":{
+                "default": "Ctrl+Shift+P",
+                "mac": "MacCtrl+Shift+P"
+            },
+            "description": "Play the game of Rock, Paper, Scissors, Lizard, Spock in a new tab."
+        }
     },
     "browser_action":{},
     "permissions": [
