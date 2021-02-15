@@ -1,6 +1,7 @@
 # Rock, Paper, Scissors, Lizard, Spock
 
 ## This app has been created as a solution to the challenge described in the following sections.
+## See it [LIVE](https://aalekhpatel07.github.io/rpsls)
 ### This uses [Svelte](https://svelte.dev/) (the **BEST** frontend compiler), [Electron](https://www.electronjs.org/) (for a desktop app version), and [TailwindCSS](https://tailwindcss.com/) (for styling needs).
 
 *PS*: I will soon make available executables for running this on Windows as an app, and MacOS as an app (through Chromium).
