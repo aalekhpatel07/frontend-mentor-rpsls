@@ -22,23 +22,20 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true
         },
-        // Use this in development mode.
-        icon: isDev() ? path.join(process.cwd(), 'public/favicon.png') : path.join(__dirname, 'public/favicon.png'),
-        // Use this in production mode.
-        // icon: path.join(__dirname, 'public/favicon.png'),
+        icon: path.join(__dirname, 'public/favicon.png'),
         show: false
     });
 
     // This block of code is intended for development purpose only.
     // Delete this entire block of code when you are ready to package the application.
-    if (isDev()) {
-        mainWindow.loadURL('http://localhost:5000/');
-    } else {
-        loadURL(mainWindow);
-    }
+    // if (isDev()) {
+    //     mainWindow.loadURL('http://localhost:5000/');
+    // } else {
+    //     loadURL(mainWindow);
+    // }
     
     // Uncomment the following line of code when app is ready to be packaged.
-    // loadURL(mainWindow);
+    loadURL(mainWindow);
 
     // Open the DevTools and also disable Electron Security Warning.
     // process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
