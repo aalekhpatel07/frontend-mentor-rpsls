@@ -21,82 +21,54 @@
 </script>
 <style>
     .scissors{
-        top: 0rem;
-        left: 5rem;
-    }
-    .rock{
-        top: 13rem;
-        right: 0;
+        top: -1.25rem;
+        left: 6.5rem;
     }
     .paper{
-        top: 5rem;
+        top: 4.5rem;
         right: -2rem;
     }
+    .rock{
+        top: 14rem;
+        right: 1rem;
+    }
+    
     .lizard{
-        top: 13rem;
-        left: 0;
+        top: 14rem;
+        left: 1rem;
     }
     .spock{
-        top: 5rem;
+        top: 4.5rem;
         left: -2rem;
     }
     .pentagon{
-        width: 250px;
+        width: 300px;
     }
     .pentagon-container{
         margin-top: 0rem;
-    }
+    } 
 
-    @media screen and (min-width: 200px){
-        .scissors{
-            top: -1.5rem;
-            left: calc(300px - 12rem);
-        }
-        .rock{
-            top: 13.5rem;
-            right: 1rem;
-        }
-        .paper{
-            top: 3.5rem;
-            right: -2rem;
-        }
-        .lizard{
-            top: 13.5rem;
-            left: 1rem;
-        }
-        .spock{
-            top: 3.5rem;
-            left: -2rem;
-        }
-        .pentagon{
-            width: 300px;
-        }
-        .pentagon-container{
-            margin-top: 0rem;
-        } 
-    }
-
-    
     @media screen and (min-width: 768px){
         .scissors{
-            top: -3rem;
-            left: calc(400px - 16rem);
-        }
-        .rock{
-            top: 18rem;
-            right: 2rem;
+            top: -2rem;
+            left: 9rem;
         }
         .paper{
-            top: 5rem;
-            right: -3rem;
+            top: 6rem;
+            right: -2rem;
         }
+        .rock{
+            top: 19rem;
+            right: 2rem;
+        }
+        
         .lizard{
-            top: 18rem;
+            top: 19rem;
             left: 2rem;
         }
         .spock{
-            top: 5rem;
-            left: -3rem;
+            top: 6rem;
+            left: -2rem;
         }
         .pentagon{
             width: 400px;
@@ -105,12 +77,55 @@
     @media screen and (min-width: 1024px){
        .pentagon-container{
             margin-top: 4rem;
-        } 
+        }
+        .scissors{
+            top: -2.5rem;
+            left: 9rem;
+        }
+        .paper{
+            top: 6rem;
+            right: -2rem;
+        }
+        .rock{
+            top: 19rem;
+            right: 1rem;
+        }
+        
+        .lizard{
+            top: 19rem;
+            left: 1rem;
+        }
+        .spock{
+            top: 6rem;
+            left: -2rem;
+        }
+        
     }
     @media screen and (min-width: 1366px){
        .pentagon-container{
             margin-top: 4rem;
-        } 
+        }
+        .scissors{
+            top: -2.5rem;
+            left: 8rem;
+        }
+        .paper{
+            top: 6rem;
+            right: -3rem;
+        }
+        .rock{
+            top: 19rem;
+            right: 1rem;
+        }
+        
+        .lizard{
+            top: 19rem;
+            left: 1rem;
+        }
+        .spock{
+            top: 6rem;
+            left: -3rem;
+        }
     }
     
 </style>

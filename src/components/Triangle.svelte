@@ -20,59 +20,38 @@
 </script>
 <style>
     .scissors{
-        top: 0rem;
-        left: 5rem;
+        top: -2rem;
+        left: -1rem;
     }
     .rock{
         top: 13rem;
-        right: 0;
+        right: 6.5rem;
     }
     .paper{
-        top: 5rem;
-        right: -2rem;
+        top: -2rem;
+        right: -1rem;
     }
     .triangle{
-        width: 250px;
+        width: 300px;
     }
     .triangle-container{
-        margin-top: 0rem;
-    }
-
-    @media screen and (min-width: 200px){
-        .scissors{
-            top: -1.5rem;
-            left: calc(300px - 12rem);
-        }
-        .rock{
-            top: 13.5rem;
-            right: 1rem;
-        }
-        .paper{
-            top: 3.5rem;
-            right: -2rem;
-        }
-        .triangle{
-            width: 300px;
-        }
-        .triangle-container{
-            margin-top: 0rem;
-        } 
-    }
-
+        margin-top: 1rem;
+    } 
     
     @media screen and (min-width: 768px){
         .scissors{
-            top: -3rem;
-            left: calc(400px - 16rem);
+            top: -2rem;
+            left: -1rem;
+        }
+        .paper{
+            top: -2rem;
+            right: -1rem;
         }
         .rock{
             top: 18rem;
-            right: 2rem;
+            right: 9rem;
         }
-        .paper{
-            top: 5rem;
-            right: -3rem;
-        }
+        
         .triangle{
             width: 400px;
         }
@@ -81,11 +60,35 @@
        .triangle-container{
             margin-top: 4rem;
         } 
+        .scissors{
+            top: -2rem;
+            left: -1rem;
+        }
+        .paper{
+            top: -2rem;
+            right: -1rem;
+        }
+        .rock{
+            top: 15rem;
+            right: 8.5rem;
+        }
     }
     @media screen and (min-width: 1366px){
        .triangle-container{
             margin-top: 4rem;
         } 
+        .scissors{
+            top: -2rem;
+            left: -1rem;
+        }
+        .paper{
+            top: -2rem;
+            right: -1rem;
+        }
+        .rock{
+            top: 14rem;
+            right: 7.75rem;
+        }
     }
     
 </style>
