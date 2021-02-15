@@ -1,3 +1,10 @@
+# Rock, Paper, Scissors, Lizard, Spock
+
+## This app has been created as a solution to the challenge described in the following sections.
+### This uses [Svelte](https://svelte.dev/) (the **BEST** frontend compiler), [Electron](https://www.electronjs.org/) (for a desktop app version), and [TailwindCSS](https://tailwindcss.com/) (for styling needs).
+
+*PS*: I will soon make available executables for running this on Windows as an app, and MacOS as an app (through Chromium).
+
 # Frontend Mentor - Rock, Paper, Scissors
 
 ![Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg)
