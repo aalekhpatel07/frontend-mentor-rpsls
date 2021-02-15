@@ -1,0 +1,19 @@
+{
+    "name": "RPSLS | Rock, Paper, Scissors, Lizard, Spock",
+    "description": "Play Rock Paper Scissors Lizard Spock.",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "icons": {
+        "16": "favicon.ico",
+        "48": "favicon.ico",
+        "128": "favicon.ico"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "browser_action":{},
+    "permissions": [
+        "storage"
+    ]
+}
