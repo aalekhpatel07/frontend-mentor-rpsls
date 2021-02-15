@@ -20,10 +20,19 @@
     .custom-bg{
         background-color: var(--bgColor);
     }
+    
+    ._bottom{
+        bottom: -1rem;
+    }
+    @media screen and (min-width: 768px){
+    ._bottom{
+        bottom: -1.25rem;
+    }    
+    }
 </style>
 <div
-    class="text-white border-2 border-white flex flex-row justify-around items-center mx-auto absolute"
-    style="--scoreValueColor: {scoreValueColor}; bottom: -1rem; --bgColor: {bgButtonColor}; border-radius: 3px;"
+    class="text-white border-2 border-white flex flex-row justify-around items-center mx-auto absolute text-xs md:text-md lg:text-lg _bottom"
+    style="--scoreValueColor: {scoreValueColor}; --bgColor: {bgButtonColor}; border-radius: 3px;"
 >
     <button
         type="button"
