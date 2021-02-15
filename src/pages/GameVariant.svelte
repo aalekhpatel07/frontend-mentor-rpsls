@@ -5,7 +5,7 @@
     import Rules from '../components/Rules.svelte';
     import VariantToggler from '../components/VariantToggler.svelte';
 
-    export let variant, score, negative;
+    export let variant = 'rps', negative = null;
     
 
 </script>
@@ -15,7 +15,6 @@
     <div class="min-h-screen pt-3 pb-0 flex flex-col justify-start items-around max-h-screen">
         <div class="flex justify-center">
             <HeaderPanel
-                bind:score
                 bind:negative
                 {variant}
             />
@@ -29,8 +28,6 @@
         >
             <Game
                 on:result
-                bind:score
-                bind:negative
                 {variant}
             />
         </div>

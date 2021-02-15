@@ -20,15 +20,13 @@
             word = res.word;
             winner = res.winner
             sendResult(winner)
-            
-
         }
     }
 
     
 
-    export let word;
-    export let verdict;
+    export let word = '';
+    export let verdict = null;
     export let variant = 'rpsls';
     
     let player = null;
@@ -79,9 +77,10 @@
             randomAction={house}
             word={word}
             verdict={verdict}
-            winnerHouse={winner === 2}
             houseVisible={!processing}
             status={winner}
+            winnerHouse={winner === 2}
+            {variant}
             on:play-again={handlePlayAgain}
         />
     </div>

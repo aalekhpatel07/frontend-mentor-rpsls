@@ -9,13 +9,13 @@
     import { cubicInOut } from 'svelte/easing';
 
 
-    export let verdict;
-    export let word, variant;
+    export let verdict = null;
+    export let word = '', variant;
     export let selectedAction;
     export let randomAction;
     // export let winnerHouse = false;
     export let houseVisible = false;
-    export let status;
+    export let status = -1;
 
     const icons = variant === 'rps' ? wr_icons.rps : wr_icons.rpsls
 

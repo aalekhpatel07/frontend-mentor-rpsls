@@ -5,7 +5,7 @@
     import { cubicInOut } from 'svelte/easing';
     import fadeScale from '../transitions/fadeScale';
 
-    export let icon, gradient, name, top, left;
+    export let icon, gradient = '', name = '', top = 0, left = 0;
     export let visible = true;
     export let md = 28, lg = 32, avp = 24, xl = 36;
 

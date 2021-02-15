@@ -1,10 +1,12 @@
 <script>
 
     const scoreValueColor = 'hsl(229, 25%, 31%)';
-    export let score, negative;
+    import { score } from '../store/store';
 
     import fly from '../transitions/fly';
     import { cubicInOut } from 'svelte/easing';
+
+    export let negative = null;
     
     function handleComplete(){
         negative = false;
@@ -32,12 +34,12 @@
     }
 
 </style>
-{#key score}
+{#key $score}
     <span
         class="mx-auto barlow text-4xl transform-y-scale md:text-6xl font-bold score-numeral"
         style="color: {scoreValueColor};"
     >
-        {score}
+        {$score}
     </span>
     {#if negative}
         <div class="relative text-center" >

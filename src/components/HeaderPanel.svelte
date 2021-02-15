@@ -1,5 +1,7 @@
 <script>
     import ScoreNumeral from './ScoreNumeral.svelte'
+    import TrashSVG from '../../images/trash-2.svg'
+    import { score } from '../store/store'
 
     const scale = 1.3;
     const borderRadius = '20px';
@@ -8,7 +10,7 @@
     
     const letterSpacing = '2px';
 
-    export let score, negative, variant;
+    export let negative, variant;
     
 
 </script>
@@ -46,8 +48,14 @@
         </div>
     <div class="flex flex-col justify-center p-6 w-3/5 sm:w-1/2 md:w-1/3 lg:w-1/4">
         <div
-            class="bg-white h-100 py-3 md:py-6 lg:py-4 rounded-lg flex flex-col align-center justify-center"
+            class="relative bg-white h-100 py-3 md:py-6 lg:py-4 rounded-lg flex flex-col align-center justify-center"
         >
+            <div class="absolute top-2 right-2">
+                <button type="button" on:click|preventDefault={() => score.set(0)} class="rounded-full focus:outline-none">
+                    <TrashSVG height={24} width={24} class="rounded-full bg-white text-white hover:text-red-600"/>
+                </button>
+                
+            </div>
             <span
                 class="mx-auto barlow uppercase score text-xs mb-2 md:mb-6 font-semibold"
                 style="--scoreColor:{scoreColor}; --letterSpacing: {letterSpacing};"
@@ -56,7 +64,6 @@
             </span>
             
             <ScoreNumeral
-                bind:score
                 bind:negative
             />
                 

@@ -40,7 +40,7 @@
             <RulesModal
                 on:click={handleModalToggle}
                 logo={variant === 'rps' ? RPSRules : RPSLSRules}
-                height={variant === 'rps' ? 330 : 500}
+                height={variant === 'rps' ? 330 : 350}
             />
             </div>
         </div>
