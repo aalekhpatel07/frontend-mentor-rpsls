@@ -52,7 +52,7 @@
         >
             <div class="absolute top-2 right-2">
                 <button type="button" on:click|preventDefault={() => score.set(0)} class="rounded-full focus:outline-none">
-                    <TrashSVG height={24} width={24} class="rounded-full bg-white text-white hover:text-red-600"/>
+                    <TrashSVG class="rounded-full bg-transparent text-white hover:text-red-600 w-4 h-4 md:h-6 md:w-6"/>
                 </button>
                 
             </div>
